@@ -6,21 +6,21 @@ import {
 } from 'typeorm';
 import { MainService } from '@nest-datum/main';
 import { CacheService } from '@nest-datum/cache';
-import { RegionRegionOption } from '../region-region-option/region-region-option.entity';
-import { Region } from './region.entity';
+import { TypeTypeOption } from '../type-type-option/type-type-option.entity';
+import { Type } from './type.entity';
 
 @Injectable()
-export class RegionService extends MainService {
+export class TypeService extends MainService {
 	protected readonly withEnvKey: boolean = false;
 	protected readonly withTwoStepRemoval: boolean = true;
-	protected readonly repositoryConstructor = Region;
-	protected readonly repositoryBindOptionConstructor = RegionRegionOption;
-	protected readonly mainRelationColumnName: string = 'regionId';
-	protected readonly optionRelationColumnName: string = 'regionOptionId';
+	protected readonly repositoryConstructor = Type;
+	protected readonly repositoryBindOptionConstructor = TypeTypeOption;
+	protected readonly mainRelationColumnName: string = 'typeId';
+	protected readonly optionRelationColumnName: string = 'typeOptionId';
 
 	constructor(
-		@InjectRepository(Region) protected readonly repository: Repository<Region>,
-		@InjectRepository(RegionRegionOption) protected repositoryBindOption: Repository<RegionRegionOption>,
+		@InjectRepository(Type) protected readonly repository: Repository<Type>,
+		@InjectRepository(TypeTypeOption) protected repositoryBindOption: Repository<TypeTypeOption>,
 		protected readonly connection: Connection,
 		protected readonly repositoryCache: CacheService,
 	) {
@@ -31,10 +31,7 @@ export class RegionService extends MainService {
 		return ({
 			...super.manyGetColumns(customColumns),
 			userId: true,
-			typeId: true,
-			categoryId: true,
-			parentId: true,
-			regionStatusId: true,
+			typeStatusId: true,
 			name: true,
 			description: true,
 		});
@@ -44,10 +41,7 @@ export class RegionService extends MainService {
 		return ({
 			...super.oneGetColumns(customColumns),
 			userId: true,
-			typeId: true,
-			categoryId: true,
-			parentId: true,
-			regionStatusId: true,
+			typeStatusId: true,
 			name: true,
 			description: true,
 		});

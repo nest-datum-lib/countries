@@ -5,18 +5,17 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	Index,
-	ManyToOne,
 	OneToMany,
 } from 'typeorm';
 import {
 	IsEmail,
 } from 'class-validator';
-import { RegionRegionRegionOption } from '../region-region-region-option/region-region-region-option.entity';
-import { RegionRegionOption } from '../region-region-option/region-region-option.entity';
-import { Type } from '../type/type.entity';
+import { TypeTypeTypeOption } from '../type-type-type-option/type-type-type-option.entity';
+import { TypeTypeOption } from '../type-type-option/type-type-option.entity';
+import { Region } from '../region/region.entity';
 
 @Entity()
-export class Region {
+export class Type {
 	@PrimaryGeneratedColumn('uuid')
 	public id: string;
 
@@ -25,19 +24,7 @@ export class Region {
 	public userId: string;
 
 	@Column({ default: '' })
-	public typeId: string;
-
-	@ManyToOne(() => Type, (type) => type.regions)
-	public type: Type;
-
-	@Column({ default: '' })
-	public categoryId: string;
-
-	@Column({ default: '' })
-	public parentId: string;
-
-	@Column({ default: '' })
-	public regionStatusId: string;
+	public typeStatusId: string;
 
 	@Column()
 	@Index({ unique: true })
@@ -68,9 +55,12 @@ export class Region {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.region)
-	public regionRegionOptions: RegionRegionOption[];
+	@OneToMany(() => TypeTypeOption, (typeTypeOption) => typeTypeOption.type)
+	public typeTypeOptions: TypeTypeOption[];
 
-	@OneToMany(() => RegionRegionRegionOption, (regionRegionRegionOption) => regionRegionRegionOption.region)
-	public regionRegionRegionOptions: RegionRegionRegionOption[];
+	@OneToMany(() => TypeTypeTypeOption, (typeTypeTypeOption) => typeTypeTypeOption.type)
+	public typeTypeTypeOptions: TypeTypeTypeOption[];
+
+	@OneToMany(() => Region, (region) => region.type)
+	public regions: Region[];
 }

@@ -28,6 +28,9 @@ export class RegionTcpController extends TcpController {
 		if (!utilsCheckStrId(options['regionStatusId'])) {
 			throw new MethodNotAllowedException(`Property "regionStatusId" is not valid.`);
 		}
+		if (!utilsCheckStrId(options['typeId'])) {
+			throw new MethodNotAllowedException(`Property "typeId" is not valid.`);
+		}
 		return await this.validateCreate(options);
 	}
 
@@ -39,6 +42,24 @@ export class RegionTcpController extends TcpController {
 				throw new MethodNotAllowedException(`Property "regionStatusId" is not valid.`);
 			}
 			output['regionStatusId'] = options['regionStatusId'];
+		}
+		if (utilsCheckExists(options['typeId'])) {
+			if (!utilsCheckStrId(options['typeId'])) {
+				throw new MethodNotAllowedException(`Property "typeId" is not valid.`);
+			}
+			output['typeId'] = options['typeId'];
+		}
+		if (utilsCheckExists(options['categoryId'])) {
+			if (!utilsCheckStrId(options['categoryId'])) {
+				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
+			}
+			output['categoryId'] = options['categoryId'];
+		}
+		if (utilsCheckExists(options['parentId'])) {
+			if (!utilsCheckStrId(options['parentId'])) {
+				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+			}
+			output['parentId'] = options['parentId'];
 		}
 		if (utilsCheckExists(options['parentId'])) {
 			if (!utilsCheckStrId(options['parentId'])) {

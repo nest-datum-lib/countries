@@ -16,13 +16,14 @@ import {
 	strId as utilsCheckStrId,
 	strName as utilsCheckStrName, 
 	strDescription as utilsCheckStrDescription,
+	strFilled as utilsCheckStrFilled,
 } from '@nest-datum-utils/check';
 
-@Controller(`${process.env.SERVICE_COUNTRIES}/region`)
-export class RegionHttpTcpController extends MainHttpTcpController {
+@Controller(`${process.env.SERVICE_COUNTRIES}/type`)
+export class TypeHttpTcpController extends MainHttpTcpController {
 	protected readonly serviceName: string = process.env.SERVICE_COUNTRIES;
-	protected readonly entityName: string = 'region';
-	protected readonly entityManyName: string = 'regionOptionRelation';
+	protected readonly entityName: string = 'type';
+	protected readonly entityManyName: string = 'typeOptionRelation';
 
 	constructor(
 		protected transport: TransportService,
@@ -34,47 +35,26 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 		if (!utilsCheckStrName(options['name'])) {
 			throw new MethodNotAllowedException(`Property "name" is not valid.`);
 		}
-		if (!utilsCheckStrId(options['regionStatusId'])) {
-			throw new MethodNotAllowedException(`Property "regionStatusId" is not valid.`);
+		if (!utilsCheckStrId(options['typeStatusId'])) {
+			throw new MethodNotAllowedException(`Property "typeStatusId" is not valid.`);
 		}
-		if (!utilsCheckStrId(options['typeId'])) {
-			throw new MethodNotAllowedException(`Property "typeId" is not valid.`);
-		}
-		return await this.validateCreate(options);
+		return await this.validateUpdate(options);
 	}
 
 	async validateUpdate(options) {
 		const output = {};
 
-		if (utilsCheckExists(options['regionStatusId'])) {
-			if (!utilsCheckStrId(options['regionStatusId'])) {
-				throw new MethodNotAllowedException(`Property "regionStatusId" is not valid.`);
+		if (utilsCheckStrFilled(options['typeStatusId'])) {
+			if (!utilsCheckStrId(options['typeStatusId'])) {
+				throw new MethodNotAllowedException(`Property "typeStatusId" is not valid.`);
 			}
-			output['regionStatusId'] = options['regionStatusId'];
+			output['typeStatusId'] = options['typeStatusId'];
 		}
-		if (utilsCheckExists(options['typeId'])) {
-			if (!utilsCheckStrId(options['typeId'])) {
-				throw new MethodNotAllowedException(`Property "typeId" is not valid.`);
+		if (utilsCheckStrFilled(options['userId'])) {
+			if (!utilsCheckStrId(options['userId'])) {
+				throw new MethodNotAllowedException(`Property "userId" is not valid.`);
 			}
-			output['typeId'] = options['typeId'];
-		}
-		if (utilsCheckExists(options['categoryId'])) {
-			if (!utilsCheckStrId(options['categoryId'])) {
-				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
-			}
-			output['categoryId'] = options['categoryId'];
-		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
-			}
-			output['parentId'] = options['parentId'];
-		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
-			}
-			output['parentId'] = options['parentId'];
+			output['userId'] = options['userId'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {
@@ -99,26 +79,19 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 		@AccessToken() accessToken: string,
 		@Body('id') id: string,
 		@Body('userId') userId: string,
-		@Body('typeId') typeId: string,
-		@Body('categoryId') categoryId: string,
-		@Body('parentId') parentId: string,
-		@Body('regionStatusId') regionStatusId: string,
+		@Body('typeStatusId') typeStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
 		@Body('isNotDelete') isNotDelete: boolean,
 	) {
-		return await this.serviceHandlerWrapper(
-			async () => await this.transport.send({
+		return await this.serviceHandlerWrapper(async () => await this.transport.send({
 			name: this.serviceName, 
 			cmd: `${this.entityName}.create`,
 		}, await this.validateCreate({
 			accessToken,
 			id,
 			userId,
-			typeId,
-			categoryId,
-			parentId,
-			regionStatusId,
+			typeStatusId,
 			name,
 			description,
 			isNotDelete,
@@ -131,17 +104,13 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 		@Param('id') id: string,
 		@Body('id') newId: string,
 		@Body('userId') userId: string,
-		@Body('typeId') typeId: string,
-		@Body('categoryId') categoryId: string,
-		@Body('parentId') parentId: string,
-		@Body('regionStatusId') regionStatusId: string,
+		@Body('typeStatusId') typeStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
 		@Body('isNotDelete') isNotDelete: boolean,
 		@Body('isDeleted') isDeleted: boolean,
 	) {
-		return await this.serviceHandlerWrapper(
-			async () => await this.transport.send({
+		return await this.serviceHandlerWrapper(async () => await this.transport.send({
 			name: this.serviceName, 
 			cmd: `${this.entityName}.update`,
 		}, await this.validateUpdate({
@@ -149,10 +118,7 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 			id,
 			newId,
 			userId,
-			typeId,
-			categoryId,
-			parentId,
-			regionStatusId,
+			typeStatusId,
 			name,
 			description,
 			isNotDelete,

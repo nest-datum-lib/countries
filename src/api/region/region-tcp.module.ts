@@ -10,6 +10,7 @@ import {
 } from '@nest-datum/cache';
 import { RegionService } from './region.service';
 import { RegionTcpController } from './region-tcp.controller';
+import { Type } from '../type/type.entity';
 import { RegionRegionRegionOption } from '../region-region-region-option/region-region-region-option.entity';
 import { RegionOption } from '../region-option/region-option.entity';
 import { RegionRegionOption } from '../region-region-option/region-region-option.entity';
@@ -19,6 +20,7 @@ import { Region } from './region.entity';
 	controllers: [ RegionTcpController ],
 	imports: [
 		TypeOrmModule.forFeature([ 
+			Type,
 			RegionOption,
 			RegionRegionOption,
 			Region,
