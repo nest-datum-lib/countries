@@ -48,4 +48,9 @@ export class TypeOptionTcpController extends OptionTcpController {
 	async content(payload) {
 		return await super.content(payload);
 	}
+
+	@EventPattern('type.updateContent')
+	async updateContent(payload) {
+		return await super.updateContent(payload);
+	}
 }

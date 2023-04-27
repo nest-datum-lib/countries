@@ -228,16 +228,12 @@ export class TransportService extends RedisService {
 		else {
 			let connectionInstanceResponse;
 
-			console.log('@@@@@@@@@', cmd, replicaData, payload, connectionInstance);
-
 			try {
 				connectionInstanceResponse = await lastValueFrom(connectionInstance
 					.send({ cmd }, payload)
 					.pipe(map(response => response)));
 			}
 			catch (err) {
-				console.log('err.message', err.message);
-
 				throw new NotFoundException(err.message);
 			}
 			if (!utilsCheckExists(connectionInstanceResponse)) {
