@@ -49,8 +49,8 @@ export class RegionOptionTcpController extends OptionTcpController {
 		return await super.content(payload);
 	}
 
-	@EventPattern('region.updateContent')
-	async updateContent(payload) {
-		return await super.updateContent(payload);
+	@EventPattern('region.contentUpdate')
+	async contentUpdate(payload) {
+		return await super.contentUpdate(payload);
 	}
 }
