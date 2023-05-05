@@ -8,6 +8,9 @@ import { TypeTypeOptionService } from './type-type-option.service';
 
 @Controller()
 export class TypeTypeOptionTcpController extends BindTcpController {
+	protected readonly mainRelationColumnName: string = 'typeId';
+	protected readonly optionRelationColumnName: string = 'typeOptionId';
+	
 	constructor(
 		protected service: TypeTypeOptionService,
 	) {

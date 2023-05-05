@@ -8,6 +8,9 @@ import { RegionRegionOptionService } from './region-region-option.service';
 
 @Controller()
 export class RegionRegionOptionTcpController extends BindTcpController {
+	protected readonly mainRelationColumnName: string = 'regionId';
+	protected readonly optionRelationColumnName: string = 'regionOptionId';
+	
 	constructor(
 		protected service: RegionRegionOptionService,
 	) {
