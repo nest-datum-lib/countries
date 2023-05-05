@@ -13,13 +13,17 @@ export class RegionRegionRegionOption extends Many {
 	public regionRegionOptionId: string;
 
 	@ManyToOne(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.regionRegionRegionOptions, {
-		onDelete: 'CASCADE'
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
 	})
 	public regionRegionOption: RegionRegionOption;
 
 	@Column()
 	public regionId: string;
 
-	@ManyToOne(() => Region, (region) => region.regionRegionRegionOptions)
+	@ManyToOne(() => Region, (region) => region.regionRegionRegionOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public region: Region;
 }

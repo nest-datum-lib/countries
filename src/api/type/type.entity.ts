@@ -55,12 +55,18 @@ export class Type {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => TypeTypeOption, (typeTypeOption) => typeTypeOption.type)
+	@OneToMany(() => TypeTypeOption, (typeTypeOption) => typeTypeOption.type, {
+		cascade: true,
+	})
 	public typeTypeOptions: TypeTypeOption[];
 
-	@OneToMany(() => TypeTypeTypeOption, (typeTypeTypeOption) => typeTypeTypeOption.type)
+	@OneToMany(() => TypeTypeTypeOption, (typeTypeTypeOption) => typeTypeTypeOption.type, {
+		cascade: true,
+	})
 	public typeTypeTypeOptions: TypeTypeTypeOption[];
 
-	@OneToMany(() => Region, (region) => region.type)
+	@OneToMany(() => Region, (region) => region.type, {
+		cascade: true,
+	})
 	public regions: Region[];
 }

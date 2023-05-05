@@ -13,13 +13,17 @@ export class TypeTypeTypeOption extends Many {
 	public typeTypeOptionId: string;
 
 	@ManyToOne(() => TypeTypeOption, (typeTypeOption) => typeTypeOption.typeTypeTypeOptions, {
-		onDelete: 'CASCADE'
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
 	})
 	public typeTypeOption: TypeTypeOption;
 
 	@Column()
 	public typeId: string;
 
-	@ManyToOne(() => Type, (type) => type.typeTypeTypeOptions)
+	@ManyToOne(() => Type, (type) => type.typeTypeTypeOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public type: Type;
 }

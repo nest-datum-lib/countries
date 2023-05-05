@@ -14,15 +14,23 @@ export class TypeTypeOption extends Bind {
 	@Column()
 	public typeOptionId: string;
 
-	@ManyToOne(() => TypeOption, (typeOption) => typeOption.typeTypeOptions)
+	@ManyToOne(() => TypeOption, (typeOption) => typeOption.typeTypeOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public typeOption: TypeOption;
 
 	@Column()
 	public typeId: string;
 
-	@ManyToOne(() => Type, (type) => type.typeTypeOptions)
+	@ManyToOne(() => Type, (type) => type.typeTypeOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public type: Type;
 
-	@OneToMany(() => TypeTypeTypeOption, (typeTypeTypeOption) => typeTypeTypeOption.typeTypeOption)
+	@OneToMany(() => TypeTypeTypeOption, (typeTypeTypeOption) => typeTypeTypeOption.typeTypeOption, {
+		cascade: true,
+	})
 	public typeTypeTypeOptions: TypeTypeTypeOption[];
 }

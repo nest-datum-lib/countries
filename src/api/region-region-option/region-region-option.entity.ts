@@ -14,15 +14,23 @@ export class RegionRegionOption extends Bind {
 	@Column()
 	public regionOptionId: string;
 
-	@ManyToOne(() => RegionOption, (regionOption) => regionOption.regionRegionOptions)
+	@ManyToOne(() => RegionOption, (regionOption) => regionOption.regionRegionOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public regionOption: RegionOption;
 
 	@Column()
 	public regionId: string;
 
-	@ManyToOne(() => Region, (region) => region.regionRegionOptions)
+	@ManyToOne(() => Region, (region) => region.regionRegionOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public region: Region;
 
-	@OneToMany(() => RegionRegionRegionOption, (regionRegionRegionOption) => regionRegionRegionOption.regionRegionOption)
+	@OneToMany(() => RegionRegionRegionOption, (regionRegionRegionOption) => regionRegionRegionOption.regionRegionOption, {
+		cascade: true,
+	})
 	public regionRegionRegionOptions: RegionRegionRegionOption[];
 }

@@ -27,7 +27,10 @@ export class Region {
 	@Column({ default: '' })
 	public typeId: string;
 
-	@ManyToOne(() => Type, (type) => type.regions)
+	@ManyToOne(() => Type, (type) => type.regions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public type: Type;
 
 	@Column({ default: '' })
@@ -68,9 +71,13 @@ export class Region {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.region)
+	@OneToMany(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.region, {
+		cascade: true,
+	})
 	public regionRegionOptions: RegionRegionOption[];
 
-	@OneToMany(() => RegionRegionRegionOption, (regionRegionRegionOption) => regionRegionRegionOption.region)
+	@OneToMany(() => RegionRegionRegionOption, (regionRegionRegionOption) => regionRegionRegionOption.region, {
+		cascade: true,
+	})
 	public regionRegionRegionOptions: RegionRegionRegionOption[];
 }

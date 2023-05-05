@@ -7,6 +7,8 @@ import { RegionRegionOption } from '../region-region-option/region-region-option
 
 @Entity()
 export class RegionOption extends Option {
-	@OneToMany(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.regionOption)
+	@OneToMany(() => RegionRegionOption, (regionRegionOption) => regionRegionOption.regionOption, {
+		cascade: true,
+	})
 	public regionRegionOptions: RegionRegionOption[];
 }
