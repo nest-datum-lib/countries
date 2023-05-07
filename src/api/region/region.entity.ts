@@ -13,6 +13,7 @@ import {
 } from 'class-validator';
 import { RegionRegionRegionOption } from '../region-region-region-option/region-region-region-option.entity';
 import { RegionRegionOption } from '../region-region-option/region-region-option.entity';
+import { RegionContent } from '../region-content/region-content.entity';
 import { Type } from '../type/type.entity';
 
 @Entity()
@@ -77,4 +78,9 @@ export class Region {
 		cascade: true,
 	})
 	public regionRegionRegionOptions: RegionRegionRegionOption[];
+
+	@OneToMany(() => RegionContent, (regionContent) => regionContent.region, {
+		cascade: true,
+	})
+	public regionContents: RegionContent[];
 }
