@@ -66,12 +66,6 @@ export class RegionHttpController extends MainHttpController {
 			}
 			output['parentId'] = options['parentId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
-			}
-			output['parentId'] = options['parentId'];
-		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {
 				throw new MethodNotAllowedException(`Property "name" is not valid.`);
