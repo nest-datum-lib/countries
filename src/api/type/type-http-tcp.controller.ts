@@ -24,6 +24,8 @@ export class TypeHttpTcpController extends MainHttpTcpController {
 	protected readonly serviceName: string = process.env.SERVICE_COUNTRIES;
 	protected readonly entityName: string = 'type';
 	protected readonly entityManyName: string = 'typeOptionRelation';
+	protected readonly mainRelationColumnName: string = 'typeId';
+	protected readonly optionRelationColumnName: string = 'typeOptionId';
 
 	constructor(
 		protected transport: TransportService,

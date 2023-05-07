@@ -23,6 +23,8 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 	protected readonly serviceName: string = process.env.SERVICE_COUNTRIES;
 	protected readonly entityName: string = 'region';
 	protected readonly entityManyName: string = 'regionOptionRelation';
+	protected readonly mainRelationColumnName: string = 'regionId';
+	protected readonly optionRelationColumnName: string = 'regionOptionId';
 
 	constructor(
 		protected transport: TransportService,
