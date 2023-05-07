@@ -29,6 +29,11 @@ import {
 	RoleAccessTcpModule, 
 } from './api/role-access';
 import { 
+	RegionContentHttpModule,
+	RegionContentHttpTcpModule, 
+	RegionContentTcpModule, 
+} from './api/region-content';
+import { 
 	RegionRegionOptionHttpModule,
 	RegionRegionOptionHttpTcpModule, 
 	RegionRegionOptionTcpModule, 
@@ -76,6 +81,7 @@ const Http = {
 	AccessHttpModule,
 	RoleAccessHttpModule,
 	SettingHttpModule,
+	RegionContentHttpModule,
 	RegionRegionOptionHttpModule,
 	RegionOptionHttpModule,
 	RegionStatusHttpModule,
@@ -92,6 +98,7 @@ const HttpTcp = {
 	AccessHttpTcpModule,
 	RoleAccessHttpTcpModule,
 	SettingHttpTcpModule,
+	RegionContentHttpTcpModule,
 	RegionRegionOptionHttpTcpModule,
 	RegionOptionHttpTcpModule,
 	RegionStatusHttpTcpModule,
@@ -108,6 +115,7 @@ const Tcp = {
 	AccessTcpModule,
 	RoleAccessTcpModule,
 	SettingTcpModule,
+	RegionContentTcpModule,
 	RegionRegionOptionTcpModule,
 	RegionOptionTcpModule,
 	RegionStatusTcpModule,
@@ -140,6 +148,9 @@ export {
 	SettingHttpModule,
 	SettingHttpTcpModule,
 	SettingTcpModule,
+	RegionContentHttpModule,
+	RegionContentHttpTcpModule,
+	RegionContentTcpModule,
 	RegionRegionOptionTcpModule,
 	RegionOptionTcpModule,
 	RegionStatusTcpModule,

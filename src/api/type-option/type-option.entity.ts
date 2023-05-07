@@ -4,6 +4,7 @@ import {
 } from 'typeorm';
 import { Option } from '@nest-datum/option';
 import { TypeTypeOption } from '../type-type-option/type-type-option.entity';
+import { RegionContent } from '../region-content/region-content.entity';
 
 @Entity()
 export class TypeOption extends Option {
@@ -11,4 +12,9 @@ export class TypeOption extends Option {
 		cascade: true,
 	})
 	public typeTypeOptions: TypeTypeOption[];
+
+	@OneToMany(() => RegionContent, (regionContent) => regionContent.typeOption, {
+		cascade: true,
+	})
+	public regionContents: RegionContent[];
 }

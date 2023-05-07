@@ -9,6 +9,7 @@ import { TypeOptionTcpController } from './type-option-tcp.controller';
 import { TypeTypeTypeOption } from '../type-type-type-option/type-type-type-option.entity';
 import { TypeTypeOption } from '../type-type-option/type-type-option.entity';
 import { Type } from '../type/type.entity';
+import { RegionContent } from '../region-content/region-content.entity';
 import { TypeOption } from './type-option.entity';
 
 @Module({
@@ -17,6 +18,7 @@ import { TypeOption } from './type-option.entity';
 	],
 	imports: [
 		TypeOrmModule.forFeature([ 
+			RegionContent,
 			TypeOption,
 			TypeTypeOption,
 			Type,
