@@ -11,13 +11,14 @@ export class BindTcpController extends TcpController {
 	protected readonly optionRelationColumnName: string;
 
 	async validateCreate(options) {
+		console.log('>>>>>>>>>', options, options[this.mainRelationColumnName], utilsCheckStrId(options[this.mainRelationColumnName]));
+
 		if (!utilsCheckStrId(options[this.mainRelationColumnName])) {
 			throw new MethodNotAllowedException(`Property "${this.mainRelationColumnName}" is not valid.`);
 		}
 		if (!utilsCheckStrId(options[this.optionRelationColumnName])) {
 			throw new MethodNotAllowedException(`Property "${this.optionRelationColumnName}" is not valid.`);
 		}
-
 		return {
 			[this.mainRelationColumnName]: options[this.mainRelationColumnName],
 			[this.optionRelationColumnName]: options[this.optionRelationColumnName],
