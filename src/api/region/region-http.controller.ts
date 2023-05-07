@@ -42,7 +42,7 @@ export class RegionHttpController extends MainHttpController {
 		if (!utilsCheckStrId(options['typeId'])) {
 			throw new MethodNotAllowedException(`Property "typeId" is not valid.`);
 		}
-		return await this.validateCreate(options);
+		return await super.validateCreate(options);
 	}
 
 	async validateUpdate(options) {
