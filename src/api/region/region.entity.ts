@@ -34,9 +34,6 @@ export class Region {
 	public type: Type;
 
 	@Column({ default: '' })
-	public categoryId: string;
-
-	@Column({ default: '' })
 	public parentId: string;
 
 	@Column({ default: '' })

@@ -49,12 +49,6 @@ export class RegionTcpController extends TcpController {
 			}
 			output['typeId'] = options['typeId'];
 		}
-		if (utilsCheckExists(options['categoryId'])) {
-			if (!utilsCheckStrId(options['categoryId'])) {
-				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
-			}
-			output['categoryId'] = options['categoryId'];
-		}
 		if (utilsCheckExists(options['parentId'])) {
 			if (!utilsCheckStrId(options['parentId'])) {
 				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);

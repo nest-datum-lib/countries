@@ -60,12 +60,6 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 			}
 			output['typeId'] = options['typeId'];
 		}
-		if (utilsCheckExists(options['categoryId'])) {
-			if (!utilsCheckStrId(options['categoryId'])) {
-				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
-			}
-			output['categoryId'] = options['categoryId'];
-		}
 		if (utilsCheckExists(options['parentId'])) {
 			if (!utilsCheckStrId(options['parentId'])) {
 				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
@@ -102,7 +96,6 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 		@Body('id') id: string,
 		@Body('userId') userId: string,
 		@Body('typeId') typeId: string,
-		@Body('categoryId') categoryId: string,
 		@Body('parentId') parentId: string,
 		@Body('regionStatusId') regionStatusId: string,
 		@Body('name') name: string,
@@ -118,7 +111,6 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 			id,
 			userId,
 			typeId,
-			categoryId,
 			parentId,
 			regionStatusId,
 			name,
@@ -134,7 +126,6 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 		@Body('id') newId: string,
 		@Body('userId') userId: string,
 		@Body('typeId') typeId: string,
-		@Body('categoryId') categoryId: string,
 		@Body('parentId') parentId: string,
 		@Body('regionStatusId') regionStatusId: string,
 		@Body('name') name: string,
@@ -152,7 +143,6 @@ export class RegionHttpTcpController extends MainHttpTcpController {
 			newId,
 			userId,
 			typeId,
-			categoryId,
 			parentId,
 			regionStatusId,
 			name,
