@@ -11,8 +11,6 @@ export class BindTcpController extends TcpController {
 	protected readonly optionRelationColumnName: string;
 
 	async validateCreate(options) {
-		console.log('>>>>>>>>>', options, options[this.mainRelationColumnName], utilsCheckStrId(options[this.mainRelationColumnName]));
-
 		if (!utilsCheckStrId(options[this.mainRelationColumnName])) {
 			throw new MethodNotAllowedException(`Property "${this.mainRelationColumnName}" is not valid.`);
 		}
