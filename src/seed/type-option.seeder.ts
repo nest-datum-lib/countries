@@ -44,14 +44,6 @@ export class TypeOptionSeeder {
 				description: 'Iso code 2.',
 				isNotDelete: 1,
 			}, {
-				id: "happ-countries-type-option-lng",
-				userId: process.env.USER_ID,
-				dataTypeId: 'happ-data-type-int',
-				envKey: 'HAPP_COUNTRIES_TYPE_OPTION_MAX_LENGTH_PHONE',
-				name: 'Max length phone',
-				description: 'Max length phone.',
-				isNotDelete: 1,
-			}, {
 				id: "happ-countries-to-zip",
 				userId: process.env.USER_ID,
 				dataTypeId: 'happ-data-type-text',
@@ -74,6 +66,14 @@ export class TypeOptionSeeder {
 				envKey: 'HAPP_COUNTRIES_TYPE_OPTION_HAPP_COUNTRIES_TYPE_OPTION_CURRENCY',
 				name: 'Currency',
 				description: 'Currency.',
+				isNotDelete: 1,
+			}, {
+				id: "happ-countries-type-option-length",
+				userId: process.env.USER_ID,
+				dataTypeId: 'happ-data-type-text',
+				envKey: 'HAPP_COUNTRIES_TYPE_OPTION_MAX_LENGTH_PHONE',
+				name: 'Max length phone',
+				description: 'Max length phone.',
 				isNotDelete: 1,
 			}], async (data) => {
 				try {

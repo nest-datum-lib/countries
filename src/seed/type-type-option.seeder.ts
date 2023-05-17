@@ -34,7 +34,7 @@ export class TypeTypeOptionSeeder {
 				typeId: 'countries_type_country',
 			},{
 				id: uuidv4(),
-				typeOptionId: 'happ-countries-type-option-lng',
+				typeOptionId: 'happ-countries-type-option-length',
 				typeId: 'countries_type_country',
 			},{
 				id: uuidv4(),

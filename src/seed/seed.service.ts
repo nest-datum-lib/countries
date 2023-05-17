@@ -28,10 +28,10 @@ export class SeedService {
 		private readonly regionStatus: RegionStatusSeeder,
 	) {
 		this.seeders = [
-			this.typeOption,
-			this.typeTypeOption,
 			this.typeStatus,
 			this.type,
+			this.typeOption,
+			this.typeTypeOption,
 			this.regionStatus,
 			this.region,
 			this.regionContent,
