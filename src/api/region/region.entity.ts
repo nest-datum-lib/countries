@@ -41,7 +41,7 @@ export class Region {
 	public regionStatusId: string;
 
 	@Column()
-	@Index({ unique: true })
+	@Index()
 	public name: string;
 
 	@Column({ default: '' })
