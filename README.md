@@ -1,2 +1,2 @@
 # @nest-datum-lib/countries
-## Locations API.
+## Locations API
