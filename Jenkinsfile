@@ -16,11 +16,9 @@ pipeline {
 
         stage('Init & Build project') {
             steps {
-                dir("$WORKSPACE_PATH") {
-                    sh "npm install"
-                    sh "npm run build"
-                    sh "sudo chmod o+rw $SERVICE_HOME/$SERVICE_NAME/.env"
-                }
+                sh "npm install"
+                sh "npm run build"
+                sh "sudo chmod o+rw $SERVICE_HOME/$SERVICE_NAME/.env"
             }
         }
 
@@ -29,10 +27,8 @@ pipeline {
                 sh "sudo chmod -R o+rw $TARGET_DIST_DEPLOY_PATH"
                 sh "rm -r $TARGET_DIST_DEPLOY_PATH/* || true"
 
-                dir("$WORKSPACE_PATH/dist") {
-                    sh "cp -r ./* $TARGET_DIST_DEPLOY_PATH"
-                    sh "sudo chown -R $JOB_NAME:$JOB_NAME $TARGET_DIST_DEPLOY_PATH/*"
-                }
+                sh "cp -r ./dist/* $TARGET_DIST_DEPLOY_PATH"
+                sh "sudo chown -R $JOB_NAME:$JOB_NAME $TARGET_DIST_DEPLOY_PATH/*"
 
                 script {
                     try {

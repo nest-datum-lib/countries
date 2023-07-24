@@ -1,6 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import strToBool from "./strToBool";
-
 const sqlConfig = () => {
 	const configArr: Array<any> =  Object.keys(process.env || {})
 		.filter((key) => [ 'SQL_SLAVE', '_HOST' ].filter((item) => key.includes(item)).length === [ 'SQL_SLAVE', '_HOST' ].length)
