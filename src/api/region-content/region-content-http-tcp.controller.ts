@@ -4,7 +4,7 @@ import {
 	Body,
 	Param,
 } from '@nestjs/common';
-import { MethodNotAllowedException } from '@nestjs/common';
+import { MethodNotAllowedException } from '@nest-datum-common/exceptions';
 import { Controller } from '@nestjs/common';
 import { AccessToken } from '@nest-datum-common/decorators';
 import { BindHttpTcpController } from '@nest-datum/bind';
